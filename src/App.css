@@ -1,0 +1,77 @@
+/* Root 3D Scene */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  perspective: 1200px;
+  font-family: system-ui, sans-serif;
+}
+
+/* 3D Card Layout */
+.card {
+  position: relative;
+  padding: 3rem;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* Tilt layout */
+.card:hover {
+  transform: rotateX(12deg) rotateY(-12deg);
+}
+
+/* Floating Image */
+.logo {
+  height: 6em;
+  margin-bottom: 1.5rem;
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+  transform: translateZ(70px);
+  will-change: transform;
+}
+
+/* Glow on hover */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateZ(70px) translateY(0);
+  }
+  50% {
+    transform: translateZ(90px) translateY(-20px);
+  }
+  100% {
+    transform: translateZ(70px) translateY(0);
+  }
+}
+
+/* Layered text depth */
+h1 {
+  transform: translateZ(50px);
+}
+
+p {
+  transform: translateZ(30px);
+  color: #aaa;
+}
+
+.read-the-docs {
+  transform: translateZ(15px);
+  color: #888;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+  }
+  .card {
+    transform: none;
+  }
+}
